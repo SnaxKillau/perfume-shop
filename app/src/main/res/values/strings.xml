@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">perfume_shop</string>
+    <string name="brand">SFRAGRANCE</string>
+    <string name="pro_brand">Dior</string>
+    <string name="pro_name">Sauvage</string>
+    <string name="price">"150$"</string>
+    <string name="brand_name">Dior:Sauvage</string>
+    <string name="brand_description">
+        Sauvage is an act of creation inspired by wide-open spaces. An ozone blue sky that dominates a white-hot rocky landscape.</string>
+    <string name="new_in">New in</string>
+    <string name="new_products_description">This the newest products of this month</string>
+
 </resources>
