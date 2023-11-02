@@ -26,14 +26,14 @@ class ProductAdapter:ListAdapter<Product , ProductAdapter.ProductViewHolder>(
 
     class ProductViewHolder(val itemBinding: ViewHolderHomeProductsBinding):RecyclerView.ViewHolder(itemBinding.root){
 
-            fun bind(product: Product){
+        fun bind(product: Product){
 
-                val img = product.imagePath;
-                Picasso.get().load("http://10.0.2.2:8080/image/$img").into(itemBinding.imgProduct);
-                itemBinding.productBrand.text = product.brandName
+            val img = product.imagePath;
+            Picasso.get().load("http://10.0.2.2:8080/image/$img").into(itemBinding.imgProduct);
+            itemBinding.productBrand.text = product.brandName
 
 
-            }
+        }
 
 
     }
