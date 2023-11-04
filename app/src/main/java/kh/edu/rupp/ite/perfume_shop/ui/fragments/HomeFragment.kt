@@ -74,11 +74,11 @@ class HomeFragment: Fragment() {
 
 
 
-         val gridLayoutManager:GridLayoutManager = GridLayoutManager(context, productList?.size!!)
+        val gridLayoutManager:GridLayoutManager = GridLayoutManager(context, productList?.size!!)
         binding.recyclerView.layoutManager = gridLayoutManager;
 
         val  productAdapter:ProductAdapter = ProductAdapter();
-        productAdapter.submitList(productList)
+        productAdapter.submitList(productList);
 
 
         binding.recyclerView.adapter = productAdapter;
