@@ -1,11 +1,10 @@
-package kh.edu.rupp.ite.perfume_shop.ui.adapter
+package kh.edu.rupp.ite.perfume_shop.adapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import kh.edu.rupp.ite.perfume_shop.api.model.Categories
 import android.view.LayoutInflater
-import kh.edu.rupp.ite.perfume_shop.databinding.FragmentCategoriesBinding
 import kh.edu.rupp.ite.perfume_shop.databinding.ViewHolderCategoriesBinding
 
 

@@ -1,16 +1,13 @@
-package kh.edu.rupp.ite.perfume_shop.ui.activity
+package kh.edu.rupp.ite.perfume_shop.view.activity
 
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.denzcoskun.imageslider.ImageSlider
-import com.denzcoskun.imageslider.constants.ScaleTypes
-import com.denzcoskun.imageslider.models.SlideModel
 import kh.edu.rupp.ite.perfume_shop.R
 import kh.edu.rupp.ite.perfume_shop.databinding.ActivityMainBinding
-import kh.edu.rupp.ite.perfume_shop.ui.fragments.CategoriesFragment
-import kh.edu.rupp.ite.perfume_shop.ui.fragments.HomeFragment
+import kh.edu.rupp.ite.perfume_shop.view.fragments.CategoriesFragment
+import kh.edu.rupp.ite.perfume_shop.view.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

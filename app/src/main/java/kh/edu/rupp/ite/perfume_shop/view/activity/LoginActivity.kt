@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.perfume_shop.ui.activity
+package kh.edu.rupp.ite.perfume_shop.view.activity
 
 import android.content.Intent
 import android.os.Bundle
