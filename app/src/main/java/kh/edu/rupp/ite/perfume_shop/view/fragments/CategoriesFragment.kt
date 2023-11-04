@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.perfume_shop.ui.fragments
+package kh.edu.rupp.ite.perfume_shop.view.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kh.edu.rupp.ite.perfume_shop.api.model.Categories
 import kh.edu.rupp.ite.perfume_shop.databinding.FragmentCategoriesBinding
@@ -18,11 +16,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import kh.edu.rupp.ite.perfume_shop.api.service.CategoriesApiService
-import kh.edu.rupp.ite.perfume_shop.ui.adapter.CategoriesAdapter
+import kh.edu.rupp.ite.perfume_shop.adapter.CategoriesAdapter
 
 class
 
@@ -98,7 +95,7 @@ CategoriesFragment : Fragment() {
         val linearLayoutManager:LinearLayoutManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = linearLayoutManager;
 
-        val categoriesAdapter:CategoriesAdapter = CategoriesAdapter()
+        val categoriesAdapter: CategoriesAdapter = CategoriesAdapter()
         categoriesAdapter.submitList(categorieslist)
         binding.recyclerView.adapter = categoriesAdapter
 

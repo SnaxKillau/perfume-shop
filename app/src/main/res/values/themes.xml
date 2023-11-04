@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Perfume_shop" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#EAE6C0</item>
+    <style name="Base.Theme.Perfume_shop" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#F8F8F3</item>
 
 
         <!-- Customize your light theme here. -->
