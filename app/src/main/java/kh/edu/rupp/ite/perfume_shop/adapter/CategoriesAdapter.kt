@@ -35,7 +35,7 @@ class CategoriesAdapter : ListAdapter<Categories, CategoriesAdapter.CategoriesVi
         RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(categories: Categories) {
-            itemBinding.txtCategories.text = categories.brandName
+            itemBinding.btnCategories.text = categories.brandName
         }
     }
 }

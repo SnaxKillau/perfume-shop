@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     >
 
-
     <Button
-        android:id="@+id/txtCategories"
+        android:id="@+id/btnCategories"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:textSize="25dp"
         android:textColor="@color/black"
         android:textAlignment="textStart"
+        android:background="@drawable/button_background"
         android:drawableEnd="@drawable/ic_arrow"
         android:text="Summer" >
     </Button>
@@ -21,10 +21,5 @@
         android:layout_height="2dp"
         android:background="@color/black"
         />
-
-
-
-
-
 
 </LinearLayout>
