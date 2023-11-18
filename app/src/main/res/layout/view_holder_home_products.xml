@@ -23,12 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pro_brand"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20dp"
             />
         <TextView
             android:id="@+id/product_name"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="@string/pro_name"
             android:textSize="20dp"
@@ -36,6 +38,7 @@
         <TextView
             android:id="@+id/product_price"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="@string/price"
             android:textSize="20dp"
