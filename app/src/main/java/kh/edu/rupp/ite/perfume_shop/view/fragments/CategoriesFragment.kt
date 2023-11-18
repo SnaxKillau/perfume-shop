@@ -27,6 +27,7 @@ CategoriesFragment : Fragment() {
 
     private lateinit var binding: FragmentCategoriesBinding
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentCategoriesBinding.inflate(inflater, container, false)
         return binding.root
@@ -47,7 +48,9 @@ CategoriesFragment : Fragment() {
 
         imageSlider.setImageList(imageList, ScaleTypes.FIT)
 
+
         loadCategories()
+
 
     }
 
@@ -96,7 +99,12 @@ CategoriesFragment : Fragment() {
         binding.recyclerView.layoutManager = linearLayoutManager;
 
         val categoriesAdapter: CategoriesAdapter = CategoriesAdapter()
+
+        categoriesAdapter.onCategoriesClickListener = {index:Int , category:Categories ->
+           Log.d("framgentNume" , index.toString());
+        }
         categoriesAdapter.submitList(categorieslist)
+
         binding.recyclerView.adapter = categoriesAdapter
 
     }

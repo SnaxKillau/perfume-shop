@@ -1,4 +1,5 @@
 package kh.edu.rupp.ite.perfume_shop.adapter
+import android.util.Log
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ class CategoriesAdapter : ListAdapter<Categories, CategoriesAdapter.CategoriesVi
         }
     }
 ) {
+    var onCategoriesClickListener: ((Int , Categories) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ViewHolderCategoriesBinding.inflate(layoutInflater, parent, false)
@@ -29,9 +31,15 @@ class CategoriesAdapter : ListAdapter<Categories, CategoriesAdapter.CategoriesVi
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
+        Log.d("data" , "onBindViewHolder")
+
+        holder.itemBinding.txtCategories.setOnClickListener{
+            onCategoriesClickListener?.invoke(position,item)
+            Log.d("data" , position.toString())
+        }
     }
 
-    inner class CategoriesViewHolder(private val itemBinding: ViewHolderCategoriesBinding) :
+    inner class CategoriesViewHolder(val itemBinding: ViewHolderCategoriesBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(categories: Categories) {
