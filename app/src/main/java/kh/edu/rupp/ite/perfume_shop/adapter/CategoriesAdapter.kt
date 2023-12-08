@@ -33,7 +33,7 @@ class CategoriesAdapter : ListAdapter<Categories, CategoriesAdapter.CategoriesVi
         holder.bind(item)
         Log.d("data" , "onBindViewHolder")
 
-        holder.itemBinding.txtCategories.setOnClickListener{
+        holder.itemBinding.btnCategories.setOnClickListener{
             onCategoriesClickListener?.invoke(position,item)
             Log.d("data" , position.toString())
         }
