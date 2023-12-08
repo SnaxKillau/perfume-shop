@@ -20,12 +20,15 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import kh.edu.rupp.ite.perfume_shop.api.service.CategoriesApiService
 import kh.edu.rupp.ite.perfume_shop.adapter.CategoriesAdapter
+import kh.edu.rupp.ite.perfume_shop.api.model.Status
+import kh.edu.rupp.ite.perfume_shop.viewmodel.CategoriesViewModel
 
 class
 
 CategoriesFragment : Fragment() {
 
     private lateinit var binding: FragmentCategoriesBinding
+    private val viewModel = CategoriesViewModel()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -49,49 +52,57 @@ CategoriesFragment : Fragment() {
         imageSlider.setImageList(imageList, ScaleTypes.FIT)
 
 
-        loadCategories()
-
-
-    }
-
-    fun loadCategories(){
-
-        val gson = GsonBuilder()
-            .setLenient()
-            .create()
-        val httpClient = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-
-
-        val categoriesApiService: CategoriesApiService = httpClient.create(CategoriesApiService::class.java);
-        val task:Call<List<Categories>> = categoriesApiService.loadCategoriesList();
-
-        task.enqueue(object : Callback<List<Categories>>{
-            override fun onResponse(
-                call: Call<List<Categories>>,
-                response: Response<List<Categories>>
-            ) {
-                if (response.isSuccessful){
-
-                    showCategoriesList(response.body())
-                }else {
-                    Toast.makeText(context, "Load failed!", Toast.LENGTH_LONG).show()
-                }
+        viewModel.loadCategories()
+        viewModel.categoriesdata.observe(viewLifecycleOwner){
+            when(it.status) {
+                Status.PROCESSING -> Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                Status.SUCCESS -> showCategoriesList(it.data)
+                Status.ERROR -> Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
             }
-
-            override fun onFailure(call: Call<List<Categories>>, t: Throwable) {
-
-                Log.e(
-                    "[CategoriesFragment]", "Load Fail" +
-                            ": " + t.message
-                )
-                t.printStackTrace();
-            }
-        })
-
+        }
+//        loadCategories()
+//
+//
     }
+//
+//    fun loadCategories(){
+//
+//        val gson = GsonBuilder()
+//            .setLenient()
+//            .create()
+//        val httpClient = Retrofit.Builder()
+//            .baseUrl("http://10.0.2.2:8080")
+//            .addConverterFactory(GsonConverterFactory.create(gson))
+//            .build()
+//
+//
+//        val categoriesApiService: CategoriesApiService = httpClient.create(CategoriesApiService::class.java);
+//        val task:Call<List<Categories>> = categoriesApiService.loadCategoriesList();
+//
+//        task.enqueue(object : Callback<List<Categories>>{
+//            override fun onResponse(
+//                call: Call<List<Categories>>,
+//                response: Response<List<Categories>>
+//            ) {
+//                if (response.isSuccessful){
+//
+//                    showCategoriesList(response.body())
+//                }else {
+//                    Toast.makeText(context, "Load failed!", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<Categories>>, t: Throwable) {
+//
+//                Log.e(
+//                    "[CategoriesFragment]", "Load Fail" +
+//                            ": " + t.message
+//                )
+//                t.printStackTrace();
+//            }
+//        })
+//
+//    }
 
     fun showCategoriesList(categorieslist: List<Categories>?){
 
@@ -101,7 +112,7 @@ CategoriesFragment : Fragment() {
         val categoriesAdapter: CategoriesAdapter = CategoriesAdapter()
 
         categoriesAdapter.onCategoriesClickListener = {index:Int , category:Categories ->
-           Log.d("framgentNume" , index.toString());
+           Log.d("fragmentNumb" , index.toString());
         }
         categoriesAdapter.submitList(categorieslist)
 
