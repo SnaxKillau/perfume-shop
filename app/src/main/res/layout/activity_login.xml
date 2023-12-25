@@ -41,6 +41,7 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:paddingStart="15dp"
             android:layout_marginBottom="20dp"
@@ -55,10 +56,11 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:background="@drawable/shape_background"
                 android:layout_height="match_parent"
-                android:inputType="numberPassword"
+                android:inputType="textPassword"
                 android:hint="Password"/>
         </com.google.android.material.textfield.TextInputLayout>
 

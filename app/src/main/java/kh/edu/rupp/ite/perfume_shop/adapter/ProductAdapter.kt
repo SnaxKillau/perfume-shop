@@ -1,5 +1,6 @@
 package kh.edu.rupp.ite.perfume_shop.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -27,9 +28,12 @@ class ProductAdapter:ListAdapter<Product , ProductAdapter.ProductViewHolder>(
 
         fun bind(product: Product){
 
-            val img = product.imagePath;
-            Picasso.get().load("http://10.0.2.2:8080/image/$img").into(itemBinding.imgProduct);
-            itemBinding.productBrand.text = product.brandName
+            val imageUrl: String? = product.image.firstOrNull()?.url
+            Log.d("url" , imageUrl.toString())
+
+
+            Picasso.get().load("http://10.0.2.2:8888/images/$imageUrl").into(itemBinding.imgProduct);
+            itemBinding.productBrand.text = product.name
 
 
         }
