@@ -33,7 +33,7 @@ class HomeFragment: Fragment() {
         viewModel.productData.observe(viewLifecycleOwner) {
             when(it.status) {
                 Status.PROCESSING-> Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
-                Status.SUCCESS -> showProductsList(it.data)
+                Status.SUCCESS -> showProductsList(it.data?.data)
                 Status.ERROR -> Toast.makeText(requireContext(), "Error while loading data from server", Toast.LENGTH_LONG).show()
             }
         }

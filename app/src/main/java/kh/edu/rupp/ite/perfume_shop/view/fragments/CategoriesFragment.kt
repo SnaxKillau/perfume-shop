@@ -20,6 +20,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import kh.edu.rupp.ite.perfume_shop.api.service.CategoriesApiService
 import kh.edu.rupp.ite.perfume_shop.adapter.CategoriesAdapter
+import kh.edu.rupp.ite.perfume_shop.api.model.CategoryResponse
 import kh.edu.rupp.ite.perfume_shop.api.model.Status
 import kh.edu.rupp.ite.perfume_shop.viewmodel.CategoriesViewModel
 
@@ -56,7 +57,7 @@ CategoriesFragment : Fragment() {
         viewModel.categoriesdata.observe(viewLifecycleOwner){
             when(it.status) {
                 Status.PROCESSING -> Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
-                Status.SUCCESS -> showCategoriesList(it.data)
+                Status.SUCCESS -> showCategoriesList(it.data?.data)
                 Status.ERROR -> Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
             }
         }
