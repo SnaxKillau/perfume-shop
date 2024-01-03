@@ -8,20 +8,23 @@ import kh.edu.rupp.ite.perfume_shop.R
 import kh.edu.rupp.ite.perfume_shop.databinding.ActivityMainBinding
 import kh.edu.rupp.ite.perfume_shop.view.fragments.CategoriesFragment
 import kh.edu.rupp.ite.perfume_shop.view.fragments.HomeFragment
+import kh.edu.rupp.ite.perfume_shop.view.fragments.ProductDetailFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(layoutInflater);
         setContentView(binding.root);
-        viewFragment(HomeFragment());
+        viewFragment(HomeFragment())
+
 
         binding.bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> viewFragment(HomeFragment())
-//                R.id.categories -> viewFragment(CategoriesFragment())
+                R.id.categories -> viewFragment(CategoriesFragment())
 //                R.id.profile -> viewFragment(MoreFragment())
                 else -> viewFragment(CategoriesFragment())
             }
@@ -43,7 +46,9 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
+    fun changeFragment(fragment: Fragment) {
+        viewFragment(fragment)
+    }
 
     private fun viewFragment(fragment:Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction();

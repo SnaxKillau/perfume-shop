@@ -2,12 +2,15 @@
     <string name="app_name">perfume_shop</string>
     <string name="brand">SFRAGRANCE</string>
     <string name="type">BRANDS</string>
+    <string name = "product">PRODUCT</string>
+    <string name="category">CATEGORIES</string>
     <string name="categories">Categories</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="more">More</string>
     <string name="pro_brand">Dior</string>
     <string name="pro_name">Sauvage</string>
+    <string name="detail">Detail</string>
     <string name="price">"150$"</string>
     <string name="brand_name">Dior:Sauvage</string>
     <string name="brand_description">
