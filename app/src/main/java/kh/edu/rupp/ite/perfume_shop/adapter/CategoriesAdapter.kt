@@ -35,7 +35,7 @@ class CategoriesAdapter : ListAdapter<Categories, CategoriesAdapter.CategoriesVi
 
         holder.itemBinding.btnCategories.setOnClickListener{
             onCategoriesClickListener?.invoke(position,item)
-            Log.d("data" , position.toString())
+            Log.d("data item" , item.id.toString())
         }
     }
 

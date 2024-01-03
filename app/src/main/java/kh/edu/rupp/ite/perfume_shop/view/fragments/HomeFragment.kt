@@ -1,6 +1,7 @@
 package kh.edu.rupp.ite.perfume_shop.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +12,16 @@ import kh.edu.rupp.ite.perfume_shop.api.model.Product
 import kh.edu.rupp.ite.perfume_shop.databinding.FragmentHomeBinding
 import kh.edu.rupp.ite.perfume_shop.adapter.ProductAdapter
 import kh.edu.rupp.ite.perfume_shop.api.model.Status
+import kh.edu.rupp.ite.perfume_shop.view.activity.MainActivity
+import kh.edu.rupp.ite.perfume_shop.viewmodel.ProductDetailViewModel
 import kh.edu.rupp.ite.perfume_shop.viewmodel.ProductsViewModel
 
 class HomeFragment: Fragment() {
     private lateinit var binding:FragmentHomeBinding;
-
+    private lateinit var mainActivity: MainActivity
     private val viewModel = ProductsViewModel()
+    private val productDetailViewModel = ProductDetailViewModel();
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,8 +31,12 @@ class HomeFragment: Fragment() {
         return binding.root;
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Initialize mainActivity here
+        mainActivity = activity as MainActivity
 
         viewModel.loadProductsFromApi();
         viewModel.productData.observe(viewLifecycleOwner) {
@@ -84,7 +93,13 @@ class HomeFragment: Fragment() {
         binding.recyclerView.layoutManager = gridLayoutManager;
 
         val  productAdapter: ProductAdapter = ProductAdapter();
+        productAdapter.onProductsClickListener = {index:Int , product:Product ->
+            Log.d("fragmentNumb" , index.toString());
+//            productDetailViewModel.loadProductDetail(product.id.toInt());
+            mainActivity.changeFragment(ProductDetailFragment(product.id.toInt()));
+        }
         productAdapter.submitList(productList);
+
 
 
         binding.recyclerView.adapter = productAdapter;

@@ -22,6 +22,7 @@ import kh.edu.rupp.ite.perfume_shop.api.service.CategoriesApiService
 import kh.edu.rupp.ite.perfume_shop.adapter.CategoriesAdapter
 import kh.edu.rupp.ite.perfume_shop.api.model.CategoryResponse
 import kh.edu.rupp.ite.perfume_shop.api.model.Status
+import kh.edu.rupp.ite.perfume_shop.view.activity.MainActivity
 import kh.edu.rupp.ite.perfume_shop.viewmodel.CategoriesViewModel
 
 class
@@ -30,6 +31,7 @@ CategoriesFragment : Fragment() {
 
     private lateinit var binding: FragmentCategoriesBinding
     private val viewModel = CategoriesViewModel()
+    private lateinit var mainActivity: MainActivity
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -42,6 +44,8 @@ CategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val imageSlider = binding.imgSlider;
         val imageList = ArrayList<SlideModel>()
+        // Initialize mainActivity here
+        mainActivity = activity as MainActivity
 
         imageList.add(SlideModel("https://cdn.saksfifthavenue.com/is/image/saks/0400095879372_NOCOLOR_A3?wid=484&hei=646&qlt=90&resMode=sharp2&op_usm=0.9,1.0,8,0", "Baccarat Rouge"))
         imageList.add(SlideModel("https://dimg.dillards.com/is/image/DillardsZoom/mainProduct/yves-saint-laurent-y-eau-de-parfum-for-men/00000001_zi_05465149.jpg", "YSL"))
@@ -114,7 +118,9 @@ CategoriesFragment : Fragment() {
 
         categoriesAdapter.onCategoriesClickListener = {index:Int , category:Categories ->
            Log.d("fragmentNumb" , index.toString());
+            mainActivity.changeFragment(ProductCategoryFragment(category.id.toInt()))
         }
+
         categoriesAdapter.submitList(categorieslist)
 
         binding.recyclerView.adapter = categoriesAdapter
