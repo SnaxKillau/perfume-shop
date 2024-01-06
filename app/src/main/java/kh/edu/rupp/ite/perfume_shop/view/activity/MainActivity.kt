@@ -10,6 +10,7 @@ import kh.edu.rupp.ite.perfume_shop.view.fragments.CategoriesFragment
 import kh.edu.rupp.ite.perfume_shop.view.fragments.HomeFragment
 import kh.edu.rupp.ite.perfume_shop.view.fragments.ProductDetailFragment
 import kh.edu.rupp.ite.perfume_shop.view.fragments.ShoppingBagFragment
+import kh.edu.rupp.ite.perfume_shop.view.fragments.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,9 +27,10 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> viewFragment(HomeFragment())
                 R.id.categories -> viewFragment(CategoriesFragment())
-//                R.id.profile -> viewFragment(MoreFragment())
                 R.id.bag -> viewFragment(ShoppingBagFragment())
-                else -> viewFragment(HomeFragment())
+                R.id.profile -> viewFragment(ProfileFragment())
+                else -> viewFragment(CategoriesFragment())
+
             }
             true
         }

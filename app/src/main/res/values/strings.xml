@@ -7,6 +7,8 @@
     <string name="categories">Categories</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="username">UserName</string>
+    <string name="email">Email</string>
     <string name="more">More</string>
     <string name="pro_brand">Dior</string>
     <string name="pro_name">Sauvage</string>
