@@ -15,6 +15,12 @@
     <string name="detail">Detail</string>
     <string name="price">"150$"</string>
     <string name="brand_name">Dior:Sauvage</string>
+    <string name="price_tag">Price:</string>
+    <string name="quantity_tag">Quantity</string>
+    <string name="quantity">1</string>
+    <string name ="shopping_bag">SHOPPING BAG</string>
+    <string name="bag">Bag</string>
+    <string name="pay">Pay Bill</string>
     <string name="brand_description">
         Sauvage is an act of creation inspired by wide-open spaces. An ozone blue sky that dominates a white-hot rocky landscape.</string>
     <string name="new_in">New in</string>

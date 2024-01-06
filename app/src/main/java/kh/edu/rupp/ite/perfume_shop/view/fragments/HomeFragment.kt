@@ -20,7 +20,7 @@ class HomeFragment: Fragment() {
     private lateinit var binding:FragmentHomeBinding;
     private lateinit var mainActivity: MainActivity
     private val viewModel = ProductsViewModel()
-    private val productDetailViewModel = ProductDetailViewModel();
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,8 +95,9 @@ class HomeFragment: Fragment() {
         val  productAdapter: ProductAdapter = ProductAdapter();
         productAdapter.onProductsClickListener = {index:Int , product:Product ->
             Log.d("fragmentNumb" , index.toString());
-//            productDetailViewModel.loadProductDetail(product.id.toInt());
-            mainActivity.changeFragment(ProductDetailFragment(product.id.toInt()));
+
+            mainActivity.changeFragment(ProductDetailFragment(product.id.toInt() , HomeFragment()));
+
         }
         productAdapter.submitList(productList);
 

@@ -7,25 +7,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kh.edu.rupp.ite.perfume_shop.api.model.Product
 import kh.edu.rupp.ite.perfume_shop.api.model.Status
 import kh.edu.rupp.ite.perfume_shop.databinding.FragementProductDetailBinding
 import kh.edu.rupp.ite.perfume_shop.databinding.FragmentCategoriesBinding
+import kh.edu.rupp.ite.perfume_shop.view.activity.MainActivity
 import kh.edu.rupp.ite.perfume_shop.viewmodel.ProductDetailViewModel
+import kh.edu.rupp.ite.perfume_shop.viewmodel.ShoppingBagViewModel
 
 class ProductDetailFragment: Fragment {
 
     private lateinit var binding: FragementProductDetailBinding
     private val productDetailViewModel = ProductDetailViewModel();
+    private val shoppingBagViewModel = ShoppingBagViewModel();
+    private lateinit var mainActivity: MainActivity
+    private lateinit var fragment: Fragment;
     private var id: Int = 0;
 
     // Default (empty) constructor
     constructor() : super()
 
     // Constructor with id parameter
-    constructor(id: Int) : this() {
+    constructor(id: Int , fragment: Fragment) : this() {
         this.id = id
+        this.fragment = fragment
+
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +47,8 @@ class ProductDetailFragment: Fragment {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         productDetailViewModel.loadProductDetail(id);
+        mainActivity = activity as MainActivity
+
         productDetailViewModel.productData.observe(viewLifecycleOwner) {
             when(it.status) {
                 Status.PROCESSING-> Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
@@ -56,15 +66,40 @@ class ProductDetailFragment: Fragment {
             }
         }
     }
-    fun showProduct(product: List<Product>){
-        binding.productBrand.text = product[0].brand
-        binding.productName.text = product[0].name
-        binding.productPrice.text = product[0].price.toString()
-        binding.type.text = product[0].type;
-        binding.productDescription.text = product[0].decription
-        val imageUrl: String? = product[0].image.firstOrNull()?.url
+    fun showProduct(product: Product){
+        binding.productBrand.text = product.brand
+        binding.productName.text = product.name
+        binding.productPrice.text = product.price.toString()
+        binding.type.text = product.type;
+        binding.productDescription.text = product.decription
+        binding.backBtn.setOnClickListener{
+            mainActivity.changeFragment(fragment)
+        }
+        binding.buyingbtn.setOnClickListener{
+            shoppingBagViewModel.PostingProductsFromApi(product.id.toInt())
+        }
+        val imageUrl: String? = product.image.firstOrNull()?.url
         Log.d("img" , imageUrl.toString())
-        Picasso.get().load("http://10.0.2.2:8888/images/$imageUrl")
-            .into(binding.imgProduct);
+
+
+
+        // Use Picasso to load the image
+        if (imageUrl != null) {
+            //Check if imageUrl is not null before concatenating
+            val fullImageUrl = "http://10.0.2.2:8888/images/$imageUrl"
+            Log.d("img" , fullImageUrl.toString())
+            Picasso.get().load(fullImageUrl)
+                .resize(200 , 200)
+                .into(binding.imgProduct, object : Callback {
+                    override fun onSuccess() {
+                        // Image loaded successfully
+                    }
+
+                    override fun onError(e: Exception?) {
+                        // Handle error
+                        Log.e("Picasso", "Error loading image", e)
+                    }
+                })
+        }
     }
 }
