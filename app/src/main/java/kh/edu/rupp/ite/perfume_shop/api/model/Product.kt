@@ -8,9 +8,12 @@ data class Product(
     val availableUnit:Number,
     val decription:String,
     val price:Number,
-    val type : String
+    val type : String,
+    val count: Number
 )
 data class ProductResponse(
     val data: List<Product>
 )
-
+data class ProductDetailResponse(
+    val data: Product
+)

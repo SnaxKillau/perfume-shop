@@ -27,18 +27,21 @@ class ProductAdapter:ListAdapter<Product , ProductAdapter.ProductViewHolder>(
 
     class ProductViewHolder(val itemBinding: ViewHolderHomeProductsBinding):RecyclerView.ViewHolder(itemBinding.root){
 
-        fun bind(product: Product){
-
+        fun bind(product: Product) {
             val imageUrl: String? = product.image.firstOrNull()?.url
-            Log.d("url" , imageUrl.toString())
+            Log.d("url", imageUrl.toString())
 
+            // Check if imageUrl is not null before concatenating
+            val fullImageUrl = "http://10.0.2.2:8888/images/$imageUrl"
 
-            Picasso.get().load("http://10.0.2.2:8888/images/$imageUrl").into(itemBinding.imgProduct);
+            // Use Picasso to load the image
+            if (imageUrl != null) {
+                Picasso.get().load(fullImageUrl).into(itemBinding.imgProduct)
+            }
+
             itemBinding.productBrand.text = product.brand
             itemBinding.productName.text = product.name
-
         }
-
 
     }
     var onProductsClickListener: ((Int, Product) -> Unit)? = null
