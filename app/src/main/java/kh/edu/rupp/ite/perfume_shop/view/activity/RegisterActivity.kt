@@ -23,10 +23,14 @@ class RegisterActivity(): AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         registerViewModel = RegisterViewModel();
+        binding.loginbut.setOnClickListener{startLoginActivity()}
         binding.regibut.setOnClickListener {startMainActivity()}
     }
 
     private fun startMainActivity() {
+//
+//        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+//        startActivity(intent)
         val name = binding.username.text.toString();
         val email = binding.email.text.toString();
         Log.d("email", email);
@@ -41,8 +45,11 @@ class RegisterActivity(): AppCompatActivity() {
                 startActivity(intent)
             }
 
-
-
         }
+    }
+
+    private fun startLoginActivity(){
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+        startActivity(intent)
     }
 }

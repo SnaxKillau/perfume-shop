@@ -93,6 +93,18 @@
             android:layout_marginTop="20dp"
             android:text="Register"
             />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@id/loginbut"
+            android:layout_width="match_parent"
+            android:background="@drawable/buttons"
+            android:layout_height="55dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="LOGIN"
+            />
+
 
         <TextView
             android:layout_width="match_parent"
