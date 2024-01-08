@@ -18,11 +18,6 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '8'
-    - name: Set up Gradle
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'gradle'
-        java-version: '8'
     - name: Build and package APK
       run: |
         tag=${{ github.ref }}
