@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:paddingStart="15dp"
             android:layout_marginBottom="20dp"
-            android:hint="UserName"
+            android:hint="@string/username"
             android:background="@drawable/shape_background"
             android:layout_height="50dp"/>
 
@@ -83,7 +83,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/regbut"
+            android:id="@+id/regibut"
             android:layout_width="match_parent"
             android:background="@drawable/buttons"
             android:layout_height="55dp"
@@ -93,6 +93,18 @@
             android:layout_marginTop="20dp"
             android:text="Register"
             />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@id/loginbut"
+            android:layout_width="match_parent"
+            android:background="@drawable/buttons"
+            android:layout_height="55dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="LOGIN"
+            />
+
 
         <TextView
             android:layout_width="match_parent"
