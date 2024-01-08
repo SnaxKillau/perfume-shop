@@ -11,6 +11,7 @@ import kh.edu.rupp.ite.perfume_shop.api.model.ProductApiData
 import kh.edu.rupp.ite.perfume_shop.api.model.ProductResponse
 import kh.edu.rupp.ite.perfume_shop.api.model.Status
 import kh.edu.rupp.ite.perfume_shop.api.service.ProductApiService
+import kh.edu.rupp.ite.perfume_shop.view.activity.BaseActivity
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ShoppingBagViewModel: ViewModel() {
     private val _productData = MutableLiveData<ProductApiData<List<Product>>>()
+
     val productData: LiveData<ProductApiData<List<Product>>>
         get() = _productData
     private val okHttpClient = OkHttpClient.Builder()

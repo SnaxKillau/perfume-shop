@@ -13,7 +13,7 @@ import kh.edu.rupp.ite.perfume_shop.utility.AppEncryptedPreference
 import kh.edu.rupp.ite.perfume_shop.viewmodel.LoginViewModel
 import kotlinx.coroutines.launch
 
-class LoginActivity(): AppCompatActivity() {
+class LoginActivity(): BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
 
@@ -26,6 +26,7 @@ class LoginActivity(): AppCompatActivity() {
     }
 
     private fun startMainActivity() {
+        showProgressDialog("Loading")
         val email = binding.email.text.toString();
         Log.d("email", email);
         val password = binding.password.text.toString();
@@ -34,6 +35,7 @@ class LoginActivity(): AppCompatActivity() {
                 loginViewModel.login(email, password, AppCore.get().applicationContext)
 
             if (loginSuccessful) {
+                hideProgressDialog()
                 val token = AppEncryptedPreference.get(AppCore.get().applicationContext).getApiToken()
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
