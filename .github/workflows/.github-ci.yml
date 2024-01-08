@@ -17,13 +17,13 @@ jobs:
       uses: actions/setup-java@v2
       with:
         distribution: 'adopt'
-        java-version: '11'
+        java-version: '8'
 
     - name: Set up Gradle
       uses: actions/setup-java@v2
       with:
         distribution: 'gradle'
-        java-version: '11'
+        java-version: '8'
 
     - name: Build and package APK
       run: |
@@ -47,5 +47,5 @@ jobs:
       if: success()
       uses: actions/upload-artifact@v2
       with:
-        name: visit-me
-        path: visit-me.apk
+        name: perfume-shop
+        path: perfum-shop.apk
