@@ -40,6 +40,7 @@ class ProductCategoryAdapter:ListAdapter<Product , ProductCategoryAdapter.Produc
             }
             itemBinding.productBrand.text = product.brand
             itemBinding.productName.text = product.name
+//            itemBinding.productPrice.text = product.price.toString()
         }
 
     }
