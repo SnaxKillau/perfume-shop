@@ -38,7 +38,6 @@ class ProductCategoryAdapter:ListAdapter<Product , ProductCategoryAdapter.Produc
                 // Handle the case where imageUrl is null (e.g., provide a default image or handle it accordingly)
                 Log.e("url", "Image URL is null for product: ${product.name}")
             }
-
             itemBinding.productBrand.text = product.brand
             itemBinding.productName.text = product.name
 //            itemBinding.productPrice.text = product.price.toString()

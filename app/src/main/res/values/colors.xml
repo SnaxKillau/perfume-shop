@@ -10,4 +10,6 @@
     <color name="button">#FFCB74</color>
     <color name="teal_700">#FF018786</color>
     <color name="low_white">#A0A1A5</color>
+    <color name="dark_blue">#001F3F</color>
+    <color name="dark_red">#730808</color>
 </resources>

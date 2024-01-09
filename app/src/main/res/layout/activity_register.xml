@@ -93,17 +93,27 @@
             android:layout_marginTop="20dp"
             android:text="Register"
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_200"
+            android:text=" Having Account ? Login Now "/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@id/loginbut"
             android:layout_width="match_parent"
+            android:layout_marginHorizontal="120dp"
             android:background="@drawable/buttons"
-            android:layout_height="55dp"
+            android:layout_height="40dp"
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:text="LOGIN"
             />
+
 
 
         <TextView
