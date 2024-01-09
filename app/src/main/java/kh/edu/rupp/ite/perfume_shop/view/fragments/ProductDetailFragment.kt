@@ -67,10 +67,11 @@ class ProductDetailFragment: Fragment {
         }
     }
     fun showProduct(product: Product){
-        binding.productBrand.text = product.brand
-        binding.productName.text = product.name
-        binding.productPrice.text = product.price.toString()
-        binding.type.text = product.type;
+
+        binding.productBrand.text = "Brand: " + product.brand
+        binding.productName.text = "Name: " + product.name
+        binding.productPrice.text = "Price: " + product.price.toString()
+        binding.available.text = "Available Unit: " + product.availableUnit.toString()
         binding.productDescription.text = product.decription
         binding.backBtn.setOnClickListener{
             mainActivity.changeFragment(fragment)

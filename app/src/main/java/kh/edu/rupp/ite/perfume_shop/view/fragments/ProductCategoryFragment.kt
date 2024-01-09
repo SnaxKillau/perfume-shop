@@ -13,6 +13,7 @@ import kh.edu.rupp.ite.perfume_shop.adapter.ProductCategoryAdapter
 import kh.edu.rupp.ite.perfume_shop.api.model.ProductCategory
 import kh.edu.rupp.ite.perfume_shop.api.model.Status
 import kh.edu.rupp.ite.perfume_shop.databinding.FragementCategoryProductsBinding
+import kh.edu.rupp.ite.perfume_shop.view.activity.MainActivity
 import kh.edu.rupp.ite.perfume_shop.viewmodel.ProductCategoryViewModel
 
 
@@ -21,12 +22,15 @@ class ProductCategoryFragment: Fragment {
     private lateinit var binding: FragementCategoryProductsBinding
     private val productCategoryViewModel = ProductCategoryViewModel();
     private var id: Int = 0;
+    private lateinit var mainActivity: MainActivity
+    private lateinit var fragment: Fragment;
 
     constructor() : super()
 
     // Constructor with id parameter
-    constructor(id: Int) : this() {
+    constructor(id: Int , fragment: Fragment) : this() {
         this.id = id
+        this.fragment = fragment
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +44,7 @@ class ProductCategoryFragment: Fragment {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         productCategoryViewModel.loadCategoryProduct(id)
+        mainActivity = activity as MainActivity
         productCategoryViewModel.productData.observe(viewLifecycleOwner) {
             when(it.status) {
                 Status.PROCESSING-> Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
@@ -64,6 +69,9 @@ class ProductCategoryFragment: Fragment {
         val spanCount = 1 // Set the desired number of columns
         val gridLayoutManager = GridLayoutManager(context, spanCount, GridLayoutManager.VERTICAL, false)
         binding.recyclerView.layoutManager = gridLayoutManager
+        binding.backBtn.setOnClickListener{
+            mainActivity.changeFragment(fragment)
+        }
 
 
         val  productCategoryAdapter: ProductCategoryAdapter = ProductCategoryAdapter();
