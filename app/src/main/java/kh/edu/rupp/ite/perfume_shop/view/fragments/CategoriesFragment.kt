@@ -118,7 +118,7 @@ CategoriesFragment : Fragment() {
 
         categoriesAdapter.onCategoriesClickListener = {index:Int , category:Categories ->
            Log.d("fragmentNumb" , index.toString());
-            mainActivity.changeFragment(ProductCategoryFragment(category.id.toInt()))
+            mainActivity.changeFragment(ProductCategoryFragment(category.id.toInt() , CategoriesFragment()))
         }
 
         categoriesAdapter.submitList(categorieslist)
